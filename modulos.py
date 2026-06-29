@@ -136,8 +136,23 @@ def actualizar_datos():
             print("⚠ Error: La población debe ser un número entero. Intente nuevamente.")
         except Exception as e:
             print(f"⚠ Error inesperado al ingresar la población: {e}. Intente nuevamente.")
+            
+        # Pedir nueva superficie
+        
+        nueva_superficie = None
+        while nueva_superficie is None:
+            try:
+                entrada = input("Ingrese la nueva superficie (km²): ").strip()
+                superficie_int = int(entrada)
+                if superficie_int > 0:
+                    nueva_superficie = entrada
+                else:
+                    print("⚠ Error: La superficie debe ser un número positivo. Intente nuevamente.")
+            except ValueError:
+                print("⚠ Error: La superficie debe ser un número entero. Intente nuevamente.")
+            except Exception as e:
+                print(f"⚠ Error inesperado al ingresar la superficie: {e}. Intente nuevamente.")
                 
-    
 
 def buscar_pais():
     pass
