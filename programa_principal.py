@@ -15,15 +15,15 @@ while True:
         if opcion == 1:
             modulos.agregar_pais()
         elif opcion == 2:
-            modulos
+            modulos.actualizar_datos()
         elif opcion == 3:
-            modulos
+            modulos.buscar_pais()
         elif opcion == 4:
-            modulos
+            modulos.filtrar_paises()
         elif opcion == 5:
-            modulos
+            modulos.ordenar_paises()
         elif opcion == 6:
-            modulos
+            modulos.mostrar_estadisticas()
         elif opcion == 7:
             break
         else:
