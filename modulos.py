@@ -476,5 +476,83 @@ def ordenar_paises():
         print("\n⚠ Operación cancelada por el usuario.")
     except Exception as e:
         print(f"Error general: {e}")
+        
 def mostrar_estadisticas():
-    pass
+    """Muestra estadísticas generales sobre los países del archivo"""
+    try:
+        # Leer archivo CSV
+
+        try:
+            with open('paises.csv', 'r', newline='', encoding='utf-8') as archivo:
+                lector = csv.reader(archivo)
+                filas = list(lector)
+        except FileNotFoundError:
+            print("Error: No se encontró el archivo paises.csv")
+            return
+        except IOError as e:
+            print(f"Error al leer el archivo: {e}")
+            return
+        except Exception as e:
+            print(f"Error inesperado al leer el archivo: {e}")
+            return
+ 
+        if not filas:
+            print("⚠ El archivo no contiene datos.")
+            return
+ 
+        # Recopilar datos válidos
+
+        poblaciones = []
+        superficies = []
+        continentes = {}
+ 
+        for fila in filas:
+            if len(fila) >= 4:
+                try:
+                    pob = int(fila[1])
+                    sup = int(fila[2])
+                    poblaciones.append((fila[0], pob))
+                    superficies.append((fila[0], sup))
+                    cont = fila[3].strip()
+                    if cont:
+                        continentes[cont] = continentes.get(cont, 0) + 1
+                except ValueError:
+                    pass
+ 
+        if not poblaciones:
+            print("⚠ No hay datos válidos para calcular estadísticas.")
+            return
+ 
+        # Calcular estadísticas
+
+        pais_max_pob = max(poblaciones, key=lambda x: x[1])
+        pais_min_pob = min(poblaciones, key=lambda x: x[1])
+        promedio_pob = sum(p[1] for p in poblaciones) / len(poblaciones)
+        promedio_sup = sum(s[1] for s in superficies) / len(superficies)
+ 
+        # Mostrar resultados
+
+        print("\n" + "=" * 50)
+        print("         ESTADÍSTICAS GENERALES")
+        print("=" * 50)
+ 
+        print(f"\n📊 Total de países registrados: {len(poblaciones)}")
+ 
+        print(f"\n👥 Población:")
+        print(f"   • País más poblado:   {pais_max_pob[0]} ({pais_max_pob[1]:,} hab.)")
+        print(f"   • País menos poblado: {pais_min_pob[0]} ({pais_min_pob[1]:,} hab.)")
+        print(f"   • Promedio:           {promedio_pob:,.0f} hab.")
+ 
+        print(f"\n🗺  Superficie:")
+        print(f"   • Promedio:           {promedio_sup:,.0f} km²")
+ 
+        print(f"\n🌍 Países por continente:")
+        for cont, cantidad in sorted(continentes.items()):
+            print(f"   • {cont:<20} {cantidad} país/es")
+ 
+        print("\n" + "=" * 50)
+ 
+    except KeyboardInterrupt:
+        print("\n⚠ Operación cancelada por el usuario.")
+    except Exception as e:
+        print(f"Error general: {e}")
