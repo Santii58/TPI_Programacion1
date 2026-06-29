@@ -232,7 +232,161 @@ def buscar_pais():
         print(f"Error general: {e}")
 
 def filtrar_paises():
-    pass
+    """Filtra países por continente, rango de población o rango de superficie"""
+    try:
+        # Leer archivo CSV
+        try:
+            with open('paises.csv', 'r', newline='', encoding='utf-8') as archivo:
+                lector = csv.reader(archivo)
+                filas = list(lector)
+        except FileNotFoundError:
+            print("Error: No se encontró el archivo paises.csv")
+            return
+        except IOError as e:
+            print(f"Error al leer el archivo: {e}")
+            return
+        except Exception as e:
+            print(f"Error inesperado al leer el archivo: {e}")
+            return
+ 
+        if not filas:
+            print("⚠ El archivo no contiene datos.")
+            return
+ 
+        # Mostrar opciones de filtro
+
+        print("\n¿Por qué criterio desea filtrar?")
+        print("  1. Por continente")
+        print("  2. Por rango de población")
+        print("  3. Por rango de superficie")
+ 
+        opcion = None
+        while opcion is None:
+            try:
+                entrada = input("Seleccione una opción (1-3): ").strip()
+                if entrada in ("1", "2", "3"):
+                    opcion = entrada
+                else:
+                    print("⚠ Opción inválida. Ingrese 1, 2 o 3.")
+            except Exception as e:
+                print(f"⚠ Error al leer la opción: {e}. Intente nuevamente.")
+ 
+        resultado = []
+ 
+        # Filtro por continente
+
+        if opcion == "1":
+            continente_buscar = None
+            while continente_buscar is None:
+                try:
+                    continente_buscar = input("Ingrese el continente: ").strip()
+                    if not continente_buscar:
+                        print("⚠ El continente no puede estar vacío. Intente nuevamente.")
+                        continente_buscar = None
+                except Exception as e:
+                    print(f"⚠ Error: {e}. Intente nuevamente.")
+                    continente_buscar = None
+ 
+            for fila in filas:
+                if len(fila) >= 4 and fila[3].lower() == continente_buscar.lower():
+                    resultado.append(fila)
+ 
+        # Filtro por rango de población
+
+        elif opcion == "2":
+            pob_min = None
+            while pob_min is None:
+                try:
+                    entrada = input("Ingrese la población mínima: ").strip()
+                    valor = int(entrada)
+                    if valor >= 0:
+                        pob_min = valor
+                    else:
+                        print("⚠ El valor debe ser mayor o igual a 0.")
+                except ValueError:
+                    print("⚠ Error: Ingrese un número entero.")
+                except Exception as e:
+                    print(f"⚠ Error inesperado: {e}. Intente nuevamente.")
+ 
+            pob_max = None
+            while pob_max is None:
+                try:
+                    entrada = input("Ingrese la población máxima: ").strip()
+                    valor = int(entrada)
+                    if valor >= pob_min:
+                        pob_max = valor
+                    else:
+                        print(f"⚠ El máximo debe ser mayor o igual al mínimo ({pob_min}).")
+                except ValueError:
+                    print("⚠ Error: Ingrese un número entero.")
+                except Exception as e:
+                    print(f"⚠ Error inesperado: {e}. Intente nuevamente.")
+ 
+            for fila in filas:
+                if len(fila) >= 2:
+                    try:
+                        pob = int(fila[1])
+                        if pob_min <= pob <= pob_max:
+                            resultado.append(fila)
+                    except ValueError:
+                        pass
+ 
+        # Filtro por rango de superficie
+
+        elif opcion == "3":
+            sup_min = None
+            while sup_min is None:
+                try:
+                    entrada = input("Ingrese la superficie mínima (km²): ").strip()
+                    valor = int(entrada)
+                    if valor >= 0:
+                        sup_min = valor
+                    else:
+                        print("⚠ El valor debe ser mayor o igual a 0.")
+                except ValueError:
+                    print("⚠ Error: Ingrese un número entero.")
+                except Exception as e:
+                    print(f"⚠ Error inesperado: {e}. Intente nuevamente.")
+ 
+            sup_max = None
+            while sup_max is None:
+                try:
+                    entrada = input("Ingrese la superficie máxima (km²): ").strip()
+                    valor = int(entrada)
+                    if valor >= sup_min:
+                        sup_max = valor
+                    else:
+                        print(f"⚠ El máximo debe ser mayor o igual al mínimo ({sup_min}).")
+                except ValueError:
+                    print("⚠ Error: Ingrese un número entero.")
+                except Exception as e:
+                    print(f"⚠ Error inesperado: {e}. Intente nuevamente.")
+ 
+            for fila in filas:
+                if len(fila) >= 3:
+                    try:
+                        sup = int(fila[2])
+                        if sup_min <= sup <= sup_max:
+                            resultado.append(fila)
+                    except ValueError:
+                        pass
+ 
+        # Mostrar resultados
+
+        if resultado:
+            print(f"\n✓ Se encontraron {len(resultado)} país/es:\n")
+            print(f"{'Nombre':<20} {'Población':<15} {'Superficie':<15} {'Continente':<15}")
+            print("-" * 65)
+            for pais in resultado:
+                if len(pais) >= 4:
+                    print(f"{pais[0]:<20} {pais[1]:<15} {pais[2]:<15} {pais[3]:<15}")
+        else:
+            print("⚠ No se encontraron países con ese criterio.")
+ 
+    except KeyboardInterrupt:
+        print("\n⚠ Operación cancelada por el usuario.")
+    except Exception as e:
+        print(f"Error general: {e}")
 
 def ordenar_paises():
     pass
