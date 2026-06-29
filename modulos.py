@@ -77,7 +77,22 @@ def agregar_pais():
         print(f"Error general: {e}")
 
 def actualizar_datos():
-    pass
+    """Actualiza población y superficie de un país existente"""
+    try:
+        # Pedir nombre del país
+        nombre_pais = None
+        while nombre_pais is None:
+            try:
+                nombre_pais = input("Ingrese el nombre del país a modificar: ").strip()
+                if not nombre_pais:
+                    print("⚠ Error: El nombre no puede estar vacío. Intente nuevamente.")
+                    nombre_pais = None
+                if nombre_pais.isdigit:
+                    raise ValueError ("El nombre de un pais no puede ser un numero")
+            except Exception as e:
+                print(f"⚠ Error al ingresar el nombre: {e}. Intente nuevamente.")
+                nombre_pais = None
+    
 
 def buscar_pais():
     pass
