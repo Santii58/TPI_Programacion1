@@ -25,8 +25,8 @@ Aplicación de consola en Python que permite gestionar un dataset de países car
 | 4 | Filtrar por continente, rango de población o rango de superficie |
 | 5 | Ordenar por nombre, población o superficie (asc/desc) |
 | 6 | Estadísticas: máximos, mínimos, promedios y conteo por continente |
-| 7 | Listar todos los países en tabla |
-| 0 | Salir y guardar cambios en el CSV |
+| 7 | Salir del Programa |
+
 
 
 # Ejemplos de uso
