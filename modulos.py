@@ -87,8 +87,6 @@ def actualizar_datos():
                 if not nombre_pais:
                     print("⚠ Error: El nombre no puede estar vacío. Intente nuevamente.")
                     nombre_pais = None
-                if nombre_pais.isdigit:
-                    raise ValueError ("El nombre de un pais no puede ser un numero")
             except Exception as e:
                 print(f"⚠ Error al ingresar el nombre: {e}. Intente nuevamente.")
                 nombre_pais = None
