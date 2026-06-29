@@ -121,6 +121,17 @@ def actualizar_datos():
         if not pais_encontrado:
             print(f"⚠ Error: No se encontró el país '{nombre_pais}' en el archivo.")
             return
+        
+        #pedir nueva poblacion
+        nueva_poblacion = None
+        while nueva_poblacion is None
+        try:
+            entrada = input("Ingrese la nueva població: ").strip()
+            poblacion_int = int(entrada)
+            if poblacion_int > 0:
+                nueva_poblacion = entrada
+            else:
+                
     
 
 def buscar_pais():
