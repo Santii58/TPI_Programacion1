@@ -124,18 +124,18 @@ def actualizar_datos():
         
         #pedir nueva poblacion
         nueva_poblacion = None
-        while nueva_poblacion is None
-        try:
-            entrada = input("Ingrese la nueva població: ").strip()
-            poblacion_int = int(entrada)
-            if poblacion_int > 0:
-                nueva_poblacion = entrada
-            else:
-                print("⚠ Error: La población debe ser un número positivo. Intente nuevamente.")
-        except ValueError:
-            print("⚠ Error: La población debe ser un número entero. Intente nuevamente.")
-        except Exception as e:
-            print(f"⚠ Error inesperado al ingresar la población: {e}. Intente nuevamente.")
+        while nueva_poblacion is None:
+            try:
+                entrada = input("Ingrese la nueva població: ").strip()
+                poblacion_int = int(entrada)
+                if poblacion_int > 0:
+                    nueva_poblacion = entrada
+                else:
+                    print("⚠ Error: La población debe ser un número positivo. Intente nuevamente.")
+            except ValueError:
+                print("⚠ Error: La población debe ser un número entero. Intente nuevamente.")
+            except Exception as e:
+                print(f"⚠ Error inesperado al ingresar la población: {e}. Intente nuevamente.")
             
         # Pedir nueva superficie
         
@@ -156,6 +156,21 @@ def actualizar_datos():
         if len(filas[indice_pais]) >= 3:
             filas[indice_pais][1] = nueva_poblacion
             filas[indice_pais][2] = nueva_superficie 
+         # Guardar cambios en el archivo
+        try:
+            with open('paises.csv', 'w', newline='', encoding='utf-8') as archivo:
+                escritor = csv.writer(archivo)
+                escritor.writerows(filas)
+            print(f"✓ Datos del país '{nombre_pais}' actualizados exitosamente.")
+        except IOError as e:
+            print(f"Error al escribir en el archivo: {e}")
+        except Exception as e:
+            print(f"Error inesperado al guardar los cambios: {e}")
+    
+    except KeyboardInterrupt:
+        print("\n⚠ Operación cancelada por el usuario.")
+    except Exception as e:
+        print(f"Error general: {e}")
            
 
 def buscar_pais():
