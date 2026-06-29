@@ -172,7 +172,64 @@ def actualizar_datos():
            
 
 def buscar_pais():
-    pass
+    """Busca un país por nombre con coincidencia parcial o exacta"""
+    try:
+        # Pedir nombre del país a buscar
+        nombre_buscar = None
+        while nombre_buscar is None:
+            try:
+                nombre_buscar = input("Ingrese el nombre del país a buscar: ").strip()
+                if not nombre_buscar:
+                    print("⚠ Error: El nombre no puede estar vacío. Intente nuevamente.")
+                    nombre_buscar = None
+            except Exception as e:
+                print(f"⚠ Error al ingresar el nombre: {e}. Intente nuevamente.")
+                nombre_buscar = None
+        
+        # Leer archivo CSV
+        try:
+            with open('paises.csv', 'r', newline='', encoding='utf-8') as archivo:
+                lector = csv.reader(archivo)
+                filas = list(lector)
+        except FileNotFoundError:
+            print("Error: No se encontró el archivo paises.csv")
+            return
+        except IOError as e:
+            print(f"Error al leer el archivo: {e}")
+            return
+        except Exception as e:
+            print(f"Error inesperado al leer el archivo: {e}")
+            return
+        
+        # Buscar coincidencias
+        coincidencias = []
+        nombre_lower = nombre_buscar.lower()
+        
+        for fila in filas:
+            if len(fila) > 0:
+                nombre_pais = fila[0].lower()
+                # Buscar coincidencia exacta o parcial
+                if nombre_pais == nombre_lower or nombre_lower in nombre_pais:
+                    coincidencias.append(fila)
+        
+        # Mostrar resultados
+        if coincidencias:
+            print(f"\n✓ Se encontraron {len(coincidencias)} resultado(s):\n")
+            print(f"{'Nombre':<20} {'Población':<15} {'Superficie':<15} {'Continente':<15}")
+            print("-" * 65)
+            
+            for pais in coincidencias:
+                if len(pais) >= 4:
+                    print(f"{pais[0]:<20} {pais[1]:<15} {pais[2]:<15} {pais[3]:<15}")
+                else:
+                    print(f"{pais[0]:<20} {'N/A':<15} {'N/A':<15} {'N/A':<15}")
+        else:
+            print(f"⚠ No se encontraron países con el nombre '{nombre_buscar}'")
+    
+    except KeyboardInterrupt:
+        print("\n⚠ Operación cancelada por el usuario.")
+    except Exception as e:
+        print(f"Error general: {e}")
 
 def filtrar_paises():
     pass
