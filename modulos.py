@@ -152,7 +152,11 @@ def actualizar_datos():
                 print("⚠ Error: La superficie debe ser un número entero. Intente nuevamente.")
             except Exception as e:
                 print(f"⚠ Error inesperado al ingresar la superficie: {e}. Intente nuevamente.")
-                
+            # Actualizar datos en la fila
+        if len(filas[indice_pais]) >= 3:
+            filas[indice_pais][1] = nueva_poblacion
+            filas[indice_pais][2] = nueva_superficie 
+           
 
 def buscar_pais():
     pass
