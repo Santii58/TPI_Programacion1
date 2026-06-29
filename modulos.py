@@ -4,7 +4,7 @@ import csv
 def agregar_pais():
     """Abre el archivo CSV y agrega un nuevo país con sus datos"""
     try:
-        # Validar nombre
+        # Validar nombre y evitar duplicados
         nombre = None
         while nombre is None:
             try:
@@ -12,9 +12,24 @@ def agregar_pais():
                 if not nombre:
                     print("⚠ Error: El nombre no puede estar vacío. Intente nuevamente.")
                     nombre = None
+                    continue
+
+                with open('paises.csv', 'r', newline='', encoding='utf-8') as archivo:
+                    lector = csv.reader(archivo)
+                    filas = list(lector)
+
+                for fila in filas:
+                    if len(fila) > 0 and fila[0].strip().lower() == nombre.lower():
+                        print(f"⚠ Error: El país '{nombre}' ya existe en el archivo. Ingrese otro nombre.")
+                        nombre = None
+                        break
+
+            except FileNotFoundError:
+                break
             except Exception as e:
                 print(f"⚠ Error al ingresar el nombre: {e}. Intente nuevamente.")
                 nombre = None
+        
         
         # Validar población
         poblacion = None
