@@ -131,6 +131,11 @@ def actualizar_datos():
             if poblacion_int > 0:
                 nueva_poblacion = entrada
             else:
+                print("⚠ Error: La población debe ser un número positivo. Intente nuevamente.")
+        except ValueError:
+            print("⚠ Error: La población debe ser un número entero. Intente nuevamente.")
+        except Exception as e:
+            print(f"⚠ Error inesperado al ingresar la población: {e}. Intente nuevamente.")
                 
     
 
