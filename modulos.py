@@ -92,6 +92,35 @@ def actualizar_datos():
             except Exception as e:
                 print(f"⚠ Error al ingresar el nombre: {e}. Intente nuevamente.")
                 nombre_pais = None
+    # Leer archivo CSV
+        try:
+            with open('paises.csv', 'r', newline='', encoding='utf-8') as archivo:
+                lector = csv.reader(archivo)
+                filas = list(lector)
+        except FileNotFoundError:
+            print("Error: No se encontró el archivo paises.csv")
+            return
+        except IOError as e:
+            print(f"Error al leer el archivo: {e}")
+            return
+        except Exception as e:
+            print(f"Error inesperado al leer el archivo: {e}")
+            return
+        
+        # Buscar el país
+        
+        pais_encontrado = False
+        indice_pais = -1
+        
+        for i, fila in enumerate(filas):
+            if len(fila) > 0 and fila[0].lower() == nombre_pais.lower():
+                pais_encontrado = True
+                indice_pais = i
+                break
+        
+        if not pais_encontrado:
+            print(f"⚠ Error: No se encontró el país '{nombre_pais}' en el archivo.")
+            return
     
 
 def buscar_pais():
