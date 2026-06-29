@@ -389,7 +389,92 @@ def filtrar_paises():
         print(f"Error general: {e}")
 
 def ordenar_paises():
-    pass
+    """Ordena y muestra los países según criterio y dirección elegidos"""
+    try:
+        # Leer archivo CSV
 
+        try:
+            with open('paises.csv', 'r', newline='', encoding='utf-8') as archivo:
+                lector = csv.reader(archivo)
+                filas = list(lector)
+        except FileNotFoundError:
+            print("Error: No se encontró el archivo paises.csv")
+            return
+        except IOError as e:
+            print(f"Error al leer el archivo: {e}")
+            return
+        except Exception as e:
+            print(f"Error inesperado al leer el archivo: {e}")
+            return
+ 
+        if not filas:
+            print("⚠ El archivo no contiene datos.")
+            return
+ 
+        # Elegir criterio de ordenamiento
+
+        print("\n¿Por qué criterio desea ordenar?")
+        print("  1. Por nombre (A-Z / Z-A)")
+        print("  2. Por población")
+        print("  3. Por superficie")
+ 
+        criterio = None
+        while criterio is None:
+            try:
+                entrada = input("Seleccione una opción (1-3): ").strip()
+                if entrada in ("1", "2", "3"):
+                    criterio = entrada
+                else:
+                    print("⚠ Opción inválida. Ingrese 1, 2 o 3.")
+            except Exception as e:
+                print(f"⚠ Error: {e}. Intente nuevamente.")
+ 
+        # Elegir direccion
+
+        print("\n¿En qué dirección?")
+        print("  1. Ascendente")
+        print("  2. Descendente")
+ 
+        direccion = None
+        while direccion is None:
+            try:
+                entrada = input("Seleccione una opción (1-2): ").strip()
+                if entrada in ("1", "2"):
+                    direccion = entrada
+                else:
+                    print("⚠ Opción inválida. Ingrese 1 o 2.")
+            except Exception as e:
+                print(f"⚠ Error: {e}. Intente nuevamente.")
+ 
+        invertir = (direccion == "2")
+ 
+        # Ordenar segun criterio
+
+        try:
+            if criterio == "1":
+                filas_ordenadas = sorted(filas, key=lambda f: f[0].lower() if len(f) > 0 else "", reverse=invertir)
+            elif criterio == "2":
+                filas_ordenadas = sorted(filas, key=lambda f: int(f[1]) if len(f) > 1 and f[1].isdigit() else 0, reverse=invertir)
+            elif criterio == "3":
+                filas_ordenadas = sorted(filas, key=lambda f: int(f[2]) if len(f) > 2 and f[2].isdigit() else 0, reverse=invertir)
+        except Exception as e:
+            print(f"⚠ Error al ordenar los datos: {e}")
+            return
+ 
+        # Mostrar resultados
+
+        direccion_texto = "descendente" if invertir else "ascendente"
+        criterio_texto = {"1": "nombre", "2": "población", "3": "superficie"}[criterio]
+        print(f"\n✓ Países ordenados por {criterio_texto} ({direccion_texto}):\n")
+        print(f"{'Nombre':<20} {'Población':<15} {'Superficie':<15} {'Continente':<15}")
+        print("-" * 65)
+        for pais in filas_ordenadas:
+            if len(pais) >= 4:
+                print(f"{pais[0]:<20} {pais[1]:<15} {pais[2]:<15} {pais[3]:<15}")
+ 
+    except KeyboardInterrupt:
+        print("\n⚠ Operación cancelada por el usuario.")
+    except Exception as e:
+        print(f"Error general: {e}")
 def mostrar_estadisticas():
     pass
