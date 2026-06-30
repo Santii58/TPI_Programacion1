@@ -46,13 +46,13 @@ Continente: Asia
 Ingresá una opción: 3
 Texto a buscar en el nombre: ar
 Se encontraron 3 resultado(s):
-─────────────────────────────────────────────────────
+
 NOMBRE               POBLACIÓN  SUPERFICIE (km²) CONTINENTE
-─────────────────────────────────────────────────────
+
 Argentina           45,376,763         2,780,400 América
 Bulgaria             6,520,000            110,879 Europa
 Marruecos           37,344,795           710,850 África
-─────────────────────────────────────────────────────
+
 ```
 
 ### Estadísticas
@@ -101,3 +101,7 @@ Japón,125800000,377975,Asia
 |--------|--------|
 | [Tomas Ñanculeu] | [ 36529] |
 | [Santiago Nervi] | [ 7225 ] |
+
+## Docentes 
+-- Sofia Elizabeth Fernández --
+-- Ana Eugenia Mutti --
