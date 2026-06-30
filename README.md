@@ -108,3 +108,6 @@ Japón,125800000,377975,Asia
 
 ## Links de youtube
 https://www.youtube.com/watch?v=9-eXX3Tw0o4
+
+## Extenciones recomendadas
+--@id:tomoki1207.pdf : para leer el archivo pdf desde VSC
