@@ -1,51 +1,50 @@
 nombre,poblacion,superficie,continente
-Argentina,45376763,2780400,América
-Brasil,213993437,8515767,América
-Chile,19116201,756102,América
-Colombia,51049498,1141748,América
-México,130262216,1964375,América
-Perú,44132551,60000,América
-Venezuela,28435943,916445,América
-Bolivia,12079472,1098581,América
-Paraguay,7356032,406752,América
-Uruguay,3574964,176215,América
-Ecuador,18001000,283561,América
-Cuba,11089511,109884,América
+Argentina,45376763,2780400,America
+Brasil,213993437,8515767,America
+Chile,19116201,756102,America
+Colombia,51049498,1141748,America
+Mexico,130262216,1964375,America
+Peru,44132551,60000,America
+Venezuela,28435943,916445,America
+Bolivia,12079472,1098581,America
+Paraguay,7356032,406752,America
+Uruguay,3574964,176215,America
+Ecuador,18001000,283561,America
+Cuba,11089511,109884,America
 Alemania,83149300,357022,Europa
 Francia,67413000,551695,Europa
-España,47351567,505990,Europa
+Espana,47351567,505990,Europa
 Italia,60317116,301340,Europa
 Reino Unido,67886011,243610,Europa
 Portugal,10298252,92212,Europa
 Polonia,37950802,312679,Europa
-Países Bajos,17590672,41543,Europa
-Bélgica,11549888,30528,Europa
+Paises Bajos,17590672,41543,Europa
+Belgica,11549888,30528,Europa
 Suecia,10379295,450295,Europa
 Grecia,10718565,131957,Europa
 China,1412600000,9596960,Asia
 India,1393409038,3287263,Asia
-Japón,125800000,377975,Asia
+Japon,125800000,377975,Asia
 Indonesia,273523615,1904569,Asia
-Pakistán,220892340,881913,Asia
+Pakistan,220892340,881913,Asia
 Bangladesh,166303498,147570,Asia
 Rusia,144104080,17098242,Europa
-Turquía,84339067,783562,Asia
+Turquia,84339067,783562,Asia
 Arabia Saudita,34813871,2149690,Asia
 Corea del Sur,51780579,100210,Asia
 Vietnam,97338583,331212,Asia
 Tailandia,70078000,513120,Asia
-Nigeria,211400708,923768,África
-Etiopía,117876227,1104300,África
-Egipto,102334404,1001449,África
-República Democrática del Congo,95894118,2344858,África
-Tanzania,61498437,945087,África
-Kenia,55864655,580367,África
-Sudáfrica,60041994,1219090,África
-Ghana,32395450,238533,África
-Marruecos,37344795,710850,África
-Estados Unidos,331449281,9833517,América
-Canadá,38246108,9984670,América
-Australia,25788215,7692024,Oceanía
-Nueva Zelanda,5122600,270467,Oceanía
-Papua Nueva Guinea,9119884,462840,Oceanía
-Litonia,19,10,africa
+Nigeria,211400708,923768,Africa
+Etiopia,117876227,1104300,Africa
+Egipto,102334404,1001449,Africa
+Republica Democratica del Congo,95894118,2344858,Africa
+Tanzania,61498437,945087,Africa
+Kenia,55864655,580367,Africa
+Sudafrica,60041994,1219090,Africa
+Ghana,32395450,238533,Africa
+Marruecos,37344795,710850,Africa
+Estados Unidos,331449281,9833517,America
+Canada,38246108,9984670,America
+Australia,25788215,7692024,Oceania
+Nueva Zelanda,5122600,270467,Oceania
+Papua Nueva Guinea,9119884,462840,Oceania
